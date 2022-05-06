@@ -19,12 +19,12 @@ public class RateMapper {
 
         RateBuilder rateBuilder = new RateBuilder();
 
-        if (Objects.nonNull(rateDto.getCurrency())) {
-            rateBuilder.withCurrency(rateDto.getCurrency());
+        if (Objects.nonNull(rateDto.getTableNumber())) {
+            rateBuilder.withTableNumber(rateDto.getTableNumber());
         }
 
-        if (Objects.nonNull(rateDto.getCode())) {
-            rateBuilder.withCode(rateDto.getCode());
+        if (Objects.nonNull(rateDto.getEffectiveDate())) {
+            rateBuilder.withEffectiveDate(rateDto.getEffectiveDate());
         }
 
         if (Objects.nonNull(rateDto.getBid())) {
@@ -46,12 +46,12 @@ public class RateMapper {
 
         RateDtoBuilder rateDtoBuilder = new RateDtoBuilder();
 
-        if (Objects.nonNull(rateEntity.getCurrency())) {
-            rateDtoBuilder.withCurrency(rateEntity.getCurrency());
+        if (Objects.nonNull(rateEntity.getTableNumber())) {
+            rateDtoBuilder.withTableNumber(rateEntity.getTableNumber());
         }
 
-        if (Objects.nonNull(rateEntity.getCode())) {
-            rateDtoBuilder.withCode(rateEntity.getCode());
+        if (Objects.nonNull(rateEntity.getEffectiveDate())) {
+            rateDtoBuilder.withEffectiveDate(rateEntity.getEffectiveDate());
         }
 
         if (Objects.nonNull(rateEntity.getBid())) {

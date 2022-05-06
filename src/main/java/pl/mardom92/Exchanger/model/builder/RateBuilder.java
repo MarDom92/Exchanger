@@ -6,8 +6,8 @@ public class RateBuilder {
 
     public long id;
 
-    public String currency;
-    public String code;
+    public String tableNumber;
+    public String effectiveDate;
     public Double bid;
     public Double ask;
 
@@ -16,13 +16,13 @@ public class RateBuilder {
         return this;
     }
 
-    public RateBuilder withCurrency(String currency) {
-        this.currency = currency;
+    public RateBuilder withTableNumber(String tableNumber) {
+        this.tableNumber = tableNumber;
         return this;
     }
 
-    public RateBuilder withCode(String code) {
-        this.code = code;
+    public RateBuilder withEffectiveDate(String effectiveDate) {
+        this.effectiveDate = effectiveDate;
         return this;
     }
 
@@ -41,8 +41,8 @@ public class RateBuilder {
         RateEntity rate = new RateEntity();
 
         rate.setId(id);
-        rate.setCurrency(currency);
-        rate.setCode(code);
+        rate.setTableNumber(tableNumber);
+        rate.setEffectiveDate(effectiveDate);
         rate.setBid(bid);
         rate.setAsk(ask);
 

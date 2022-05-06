@@ -4,18 +4,18 @@ import pl.mardom92.Exchanger.model.dto.RateDto;
 
 public class RateDtoBuilder {
 
-    public String currency;
-    public String code;
+    public String tableNumber;
+    public String effectiveDate;
     public Double bid;
     public Double ask;
 
-    public RateDtoBuilder withCurrency(String currency) {
-        this.currency = currency;
+    public RateDtoBuilder withTableNumber(String tableNumber) {
+        this.effectiveDate = effectiveDate;
         return this;
     }
 
-    public RateDtoBuilder withCode(String code) {
-        this.code = code;
+    public RateDtoBuilder withEffectiveDate(String effectiveDate) {
+        this.effectiveDate = effectiveDate;
         return this;
     }
 
@@ -33,8 +33,8 @@ public class RateDtoBuilder {
 
         RateDto rateDto = new RateDto();
 
-        rateDto.setCurrency(currency);
-        rateDto.setCode(code);
+        rateDto.setTableNumber(tableNumber);
+        rateDto.setEffectiveDate(effectiveDate);
         rateDto.setBid(bid);
         rateDto.setAsk(ask);
 

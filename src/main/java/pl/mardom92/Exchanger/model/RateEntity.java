@@ -1,5 +1,6 @@
 package pl.mardom92.Exchanger.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,8 +18,9 @@ public class RateEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public long id;
 
-    public String currency;
-    public String code;
+    @JsonProperty("no")
+    public String tableNumber;
+    public String effectiveDate;
     public Double bid;
     public Double ask;
 }
