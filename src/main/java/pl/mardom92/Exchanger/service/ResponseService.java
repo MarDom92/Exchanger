@@ -13,7 +13,7 @@ public class ResponseService {
 
     public ResponseEntity getResponse(String current) {
 
-        String url = "http://api.nbp.pl/api/exchangerates/rates/c/" + current + "/today/?format=json";
+        String url = "http://api.nbp.pl/api/exchangerates/rates/c/" + current + "/today/";
 
         ResponseEntity response = restTemplate.getForObject(url, ResponseEntity.class);
 

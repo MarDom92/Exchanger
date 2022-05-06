@@ -16,7 +16,7 @@ public class ResponseController {
     private final ResponseService responseService;
 
     @GetMapping("")
-    public ResponseEntity getResponse(@RequestParam(name = "in") String current) {
+    public ResponseEntity getResponse(@RequestParam(name = "in", required = true) String current) {
         return responseService.getResponse(current);
     }
 }
