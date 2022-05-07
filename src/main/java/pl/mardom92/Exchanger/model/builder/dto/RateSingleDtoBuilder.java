@@ -4,10 +4,10 @@ import pl.mardom92.Exchanger.model.dto.RateSingleDto;
 
 public class RateSingleDtoBuilder {
 
-    public String tableNumber;
-    public String effectiveDate;
-    public Double bid;
-    public Double ask;
+    private String tableNumber;
+    private String effectiveDate;
+    private Double bid;
+    private Double ask;
 
     public RateSingleDtoBuilder withTableNumber(String tableNumber) {
         this.effectiveDate = effectiveDate;

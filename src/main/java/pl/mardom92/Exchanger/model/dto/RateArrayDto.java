@@ -7,8 +7,8 @@ import lombok.Setter;
 @Setter
 public class RateArrayDto {
 
-    public String currency;
-    public String code;
-    public Double bid;
-    public Double ask;
+    private String currency;
+    private String code;
+    private Double bid;
+    private Double ask;
 }

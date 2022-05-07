@@ -10,9 +10,9 @@ import java.util.List;
 @Setter
 public class ResponseArray {
 
-    public String table;
-    public String no;
-    public String tradingDate;
-    public String effectiveDate;
-    public List<RateArrayDto> rates;
+    private String table;
+    private String no;
+    private String tradingDate;
+    private String effectiveDate;
+    private List<RateArrayDto> rates;
 }

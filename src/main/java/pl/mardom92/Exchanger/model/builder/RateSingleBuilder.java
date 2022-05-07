@@ -4,12 +4,12 @@ import pl.mardom92.Exchanger.model.RateSingleEntity;
 
 public class RateSingleBuilder {
 
-    public long id;
+    private long id;
 
-    public String tableNumber;
-    public String effectiveDate;
-    public Double bid;
-    public Double ask;
+    private String tableNumber;
+    private String effectiveDate;
+    private Double bid;
+    private Double ask;
 
     public RateSingleBuilder withId(long id) {
         this.id = id;

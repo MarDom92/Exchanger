@@ -9,8 +9,8 @@ import lombok.Setter;
 public class RateSingleDto {
 
     @JsonProperty("no")
-    public String tableNumber;
-    public String effectiveDate;
-    public Double bid;
-    public Double ask;
+    private String tableNumber;
+    private String effectiveDate;
+    private Double bid;
+    private Double ask;
 }
