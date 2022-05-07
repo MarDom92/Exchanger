@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import pl.mardom92.Exchanger.model.dto.RateArrayDto;
+import pl.mardom92.Exchanger.model.dto.CurrencyRateDto;
 import pl.mardom92.Exchanger.service.RateService;
 
 import java.util.List;
@@ -18,7 +18,7 @@ public class RateController {
     private final RateService rateService;
 
     @GetMapping("/rates")
-    public List<RateArrayDto> getAllRates() {
+    public List<CurrencyRateDto> getAllRates() {
         return rateService.getAllRates();
     }
 

@@ -3,7 +3,7 @@ package pl.mardom92.Exchanger.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.mardom92.Exchanger.model.ResponseArray;
-import pl.mardom92.Exchanger.model.dto.RateArrayDto;
+import pl.mardom92.Exchanger.model.dto.CurrencyRateDto;
 import pl.mardom92.Exchanger.model.dto.RateSingleDto;
 
 import java.util.ArrayList;
@@ -18,10 +18,10 @@ public class RateService {
 
     private final ResponseService responseService;
 
-    public List<RateArrayDto> getAllRates() {
+    public List<CurrencyRateDto> getAllRates() {
 
         ResponseArray[] responseArray;
-        List<RateArrayDto> rates = new ArrayList<>();
+        List<CurrencyRateDto> rates = new ArrayList<>();
         String url = ResponseTableURL;
 
         responseArray = responseService.getResponseArray(url);
@@ -39,7 +39,7 @@ public class RateService {
 
         String url = ResponseTableURL;
         List<String> codes = new ArrayList<>();
-        List<RateArrayDto> rates = new ArrayList<>();
+        List<CurrencyRateDto> rates = new ArrayList<>();
 
         ResponseArray[] responseArray = responseService.getResponseArray(url);
 
