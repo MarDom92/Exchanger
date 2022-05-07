@@ -17,7 +17,7 @@ public class ResponseController {
     private final ResponseService responseService;
 
     @GetMapping("/response")
-    public ResponseSingle getResponseSingle(@RequestParam(name = "in", required = true) String current) {
+    public ResponseSingle getResponseSingle(@RequestParam(name = "code", required = true) String current) {
 
         String url = "http://api.nbp.pl/api/exchangerates/rates/c/" + current;
 
