@@ -3,7 +3,8 @@ package pl.mardom92.Exchanger.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-import pl.mardom92.Exchanger.model.ResponseEntity;
+import pl.mardom92.Exchanger.model.ResponseSingle;
+import pl.mardom92.Exchanger.model.ResponseArray;
 
 @Service
 @RequiredArgsConstructor
@@ -11,12 +12,19 @@ public class ResponseService {
 
     private final RestTemplate restTemplate;
 
-    public ResponseEntity getResponse(String current) {
+    public ResponseSingle getResponseSingle(String url) {
 
-        String url = "http://api.nbp.pl/api/exchangerates/rates/c/" + current + "/today/";
+        //TODO: błędny kod waluty daje 404, poinien być najprawdopodobniej wyjątek
+        ResponseSingle responseSingle = restTemplate.getForObject(url, ResponseSingle.class);
 
-        ResponseEntity response = restTemplate.getForObject(url, ResponseEntity.class);
+        return responseSingle;
+    }
 
-        return response;
+    public ResponseArray[] getResponseArray(String url) {
+
+        //TODO: błędny kod waluty daje 404, poinien być najprawdopodobniej wyjątek
+        ResponseArray[] responseArray = restTemplate.getForObject(url, ResponseArray[].class);
+
+        return responseArray;
     }
 }

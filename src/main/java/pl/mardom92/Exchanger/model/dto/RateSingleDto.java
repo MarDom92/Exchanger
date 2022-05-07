@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class RateDto {
+public class RateSingleDto {
 
     @JsonProperty("no")
     public String tableNumber;
