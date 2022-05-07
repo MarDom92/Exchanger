@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class ResponseExceptionHandler {
 
     @ExceptionHandler(value = ResponseException.class)
-    public ResponseEntity<ResponseErrorInfo> handlerActivityException(ResponseException activityException) {
+    public ResponseEntity<ResponseErrorInfo> handlerResponseException(ResponseException responseException) {
 
         HttpStatus httpStatus = HttpStatus.MULTI_STATUS;
 
-        return ResponseEntity.status(httpStatus).body(new ResponseErrorInfo(activityException.getResponseError().getMessage()));
+        return ResponseEntity.status(httpStatus).body(new ResponseErrorInfo(responseException.getResponseError().getMessage()));
     }
 }
