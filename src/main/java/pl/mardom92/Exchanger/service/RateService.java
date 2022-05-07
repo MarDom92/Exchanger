@@ -30,4 +30,27 @@ public class RateService {
 
         return rates;
     }
+
+    public List<String> getAllCurrencies() {
+
+        String url = "http://api.nbp.pl/api/exchangerates/tables/c/";
+        List<String> codes = new ArrayList<>();
+        List<RateArrayDto> rates = new ArrayList<>();
+
+        ResponseArray[] responseArray = responseService.getResponseArray(url);
+
+        int size = responseArray.length;
+
+        for (int i = 0; i < size; i++) {
+
+            rates = responseArray[i].getRates();
+
+            for (int j = 0; j < rates.size(); j++) {
+
+                codes.add(rates.get(j).getCode());
+            }
+        }
+
+        return codes;
+    }
 }

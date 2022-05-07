@@ -11,13 +11,18 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping(path = "rates")
+@RequestMapping(path = "")
 public class RateController {
 
     private final RateService rateService;
 
-    @GetMapping("")
+    @GetMapping("rates")
     public List<RateArrayDto> getAllRates() {
         return rateService.getAllRates();
+    }
+
+    @GetMapping("currencies")
+    public List<String> getAllCurrencies() {
+        return rateService.getAllCurrencies();
     }
 }
