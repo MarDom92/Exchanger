@@ -9,6 +9,6 @@ public class RateArrayDto {
 
     private String currency;
     private String code;
-    private Double bid;
-    private Double ask;
+    private double bid;
+    private double ask;
 }

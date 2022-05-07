@@ -8,8 +8,8 @@ public class RateSingleBuilder {
 
     private String tableNumber;
     private String effectiveDate;
-    private Double bid;
-    private Double ask;
+    private double bid;
+    private double ask;
 
     public RateSingleBuilder withId(long id) {
         this.id = id;

@@ -21,6 +21,6 @@ public class RateSingleEntity {
     @JsonProperty("no")
     private String tableNumber;
     private String effectiveDate;
-    private Double bid;
-    private Double ask;
+    private double bid;
+    private double ask;
 }

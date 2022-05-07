@@ -6,8 +6,8 @@ public class RateSingleDtoBuilder {
 
     private String tableNumber;
     private String effectiveDate;
-    private Double bid;
-    private Double ask;
+    private double bid;
+    private double ask;
 
     public RateSingleDtoBuilder withTableNumber(String tableNumber) {
         this.effectiveDate = effectiveDate;
