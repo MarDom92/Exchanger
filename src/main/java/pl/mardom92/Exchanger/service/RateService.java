@@ -9,6 +9,9 @@ import pl.mardom92.Exchanger.model.dto.RateSingleDto;
 import java.util.ArrayList;
 import java.util.List;
 
+import static pl.mardom92.Exchanger.Constants.ResponseSingleURL;
+import static pl.mardom92.Exchanger.Constants.ResponseTableURL;
+
 @Service
 @RequiredArgsConstructor
 public class RateService {
@@ -19,7 +22,7 @@ public class RateService {
 
         ResponseArray[] responseArray;
         List<RateArrayDto> rates = new ArrayList<>();
-        String url = "http://api.nbp.pl/api/exchangerates/tables/c/";
+        String url = ResponseTableURL;
 
         responseArray = responseService.getResponseArray(url);
 
@@ -34,7 +37,7 @@ public class RateService {
 
     public List<String> getAllCurrenciesCodes() {
 
-        String url = "http://api.nbp.pl/api/exchangerates/tables/c/";
+        String url = ResponseTableURL;
         List<String> codes = new ArrayList<>();
         List<RateArrayDto> rates = new ArrayList<>();
 
@@ -57,7 +60,7 @@ public class RateService {
 
     public double exchangeCurrency(double sum, String in, String out) {
 
-        String url = "http://api.nbp.pl/api/exchangerates/rates/c/";
+        String url = ResponseSingleURL;
 
         RateSingleDto inputCurrency = responseService.getResponseSingle(url + in).getRates().get(0);
         RateSingleDto outputCurrency = responseService.getResponseSingle(url + out).getRates().get(0);

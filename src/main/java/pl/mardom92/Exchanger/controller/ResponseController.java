@@ -9,6 +9,9 @@ import pl.mardom92.Exchanger.model.ResponseSingle;
 import pl.mardom92.Exchanger.model.ResponseArray;
 import pl.mardom92.Exchanger.service.ResponseService;
 
+import static pl.mardom92.Exchanger.Constants.ResponseSingleURL;
+import static pl.mardom92.Exchanger.Constants.ResponseTableURL;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(path = "")
@@ -19,7 +22,7 @@ public class ResponseController {
     @GetMapping("/response")
     public ResponseSingle getResponseSingle(@RequestParam(name = "code", required = true) String current) {
 
-        String url = "http://api.nbp.pl/api/exchangerates/rates/c/" + current;
+        String url = ResponseSingleURL + current;
 
         return responseService.getResponseSingle(url);
     }
@@ -27,7 +30,7 @@ public class ResponseController {
     @GetMapping("/response-array")
     public ResponseArray[] getResponseTable() {
 
-        String url = "http://api.nbp.pl/api/exchangerates/tables/c/";
+        String url = ResponseTableURL;
 
         return responseService.getResponseArray(url);
     }
