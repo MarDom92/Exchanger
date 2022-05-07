@@ -10,7 +10,7 @@ public class RateSingleDtoBuilder {
     private double ask;
 
     public RateSingleDtoBuilder withTableNumber(String tableNumber) {
-        this.effectiveDate = effectiveDate;
+        this.tableNumber = tableNumber;
         return this;
     }
 
