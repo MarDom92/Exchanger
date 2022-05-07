@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.mardom92.Exchanger.model.ResponseArray;
 import pl.mardom92.Exchanger.model.dto.RateArrayDto;
+import pl.mardom92.Exchanger.model.dto.RateSingleDto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +32,7 @@ public class RateService {
         return rates;
     }
 
-    public List<String> getAllCurrencies() {
+    public List<String> getAllCurrenciesCodes() {
 
         String url = "http://api.nbp.pl/api/exchangerates/tables/c/";
         List<String> codes = new ArrayList<>();
@@ -52,5 +53,30 @@ public class RateService {
         }
 
         return codes;
+    }
+
+    public double exchangeCurrency(double sum, String in, String out) {
+
+        String url = "http://api.nbp.pl/api/exchangerates/rates/c/";
+
+        RateSingleDto inputCurrency = responseService.getResponseSingle(url + in).getRates().get(0);
+        RateSingleDto outputCurrency = responseService.getResponseSingle(url + out).getRates().get(0);
+
+        double result = exchange(sum, inputCurrency, outputCurrency);
+
+        //2 decimal places
+        result = Math.round(result * 100.0) / 100.0;
+
+        return result;
+    }
+
+    private double exchange(double sum, RateSingleDto in, RateSingleDto out) {
+
+        double sumInPLN, result;
+
+        sumInPLN = sum / in.getAsk();
+        result = sumInPLN * out.getBid();
+
+        return result;
     }
 }
