@@ -17,7 +17,7 @@ public class RateService {
     public List<RateArrayDto> getAllRates() {
 
         ResponseArray[] responseArray;
-        List<RateArrayDto> codes = new ArrayList<>();
+        List<RateArrayDto> rates = new ArrayList<>();
         String url = "http://api.nbp.pl/api/exchangerates/tables/c/";
 
         responseArray = responseService.getResponseArray(url);
@@ -25,9 +25,9 @@ public class RateService {
         int size = responseArray.length;
 
         for (int i = 0; i < size; i++) {
-            codes.addAll(responseArray[i].getRates());
+            rates.addAll(responseArray[i].getRates());
         }
 
-        return codes;
+        return rates;
     }
 }
