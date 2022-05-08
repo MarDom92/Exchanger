@@ -1,4 +1,4 @@
-package pl.mardom92.Exchanger.model;
+package pl.mardom92.Exchanger.model.entity;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -1,7 +1,7 @@
 package pl.mardom92.Exchanger.model.mapper;
 
 import org.springframework.stereotype.Component;
-import pl.mardom92.Exchanger.model.ExchangeEntity;
+import pl.mardom92.Exchanger.model.entity.ExchangeEntity;
 import pl.mardom92.Exchanger.model.builder.ExchangeBuilder;
 import pl.mardom92.Exchanger.model.builder.dto.ExchangeDtoBuilder;
 import pl.mardom92.Exchanger.model.dto.ExchangeDto;

@@ -15,13 +15,15 @@ public class ExchangeController {
     private final ExchangeService exchangeService;
 
     @GetMapping("")
-    public List<ExchangeDto> getAllExchange(@RequestParam(required = false, defaultValue = "0") int page,
-                                            @RequestParam(required = false, defaultValue = "0") int size) {
+    public List<ExchangeDto> getAllExchanges(@RequestParam(required = false, defaultValue = "0") int page,
+                                             @RequestParam(required = false, defaultValue = "0") int size) {
+
         return exchangeService.getAllExchanges(page, size);
     }
 
     @GetMapping("/{id}")
     public ExchangeDto getSingleExchange(@PathVariable long id) {
+
         return exchangeService.getSingleExchange(id);
     }
 

@@ -18,6 +18,7 @@ public class RateController {
 
     @GetMapping("/rates")
     public List<Currency> getAllRates() {
+
         return rateService.getAllRates();
     }
 }

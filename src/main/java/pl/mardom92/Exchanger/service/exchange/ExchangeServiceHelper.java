@@ -2,7 +2,7 @@ package pl.mardom92.Exchanger.service.exchange;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-import pl.mardom92.Exchanger.model.ExchangeEntity;
+import pl.mardom92.Exchanger.model.entity.ExchangeEntity;
 import pl.mardom92.Exchanger.model.dto.ExchangeDto;
 import pl.mardom92.Exchanger.model.exception.exchange.ExchangeError;
 import pl.mardom92.Exchanger.model.exception.exchange.ExchangeException;
@@ -18,17 +18,17 @@ public class ExchangeServiceHelper {
 
     private final ExchangeRepository exchangeRepository;
 
-    protected void checkEmptyList(List<ExchangeEntity> logs) {
+    protected void checkEmptyList(List<ExchangeEntity> exchanges) {
 
-        if (logs.isEmpty()) {
-            throw new RuntimeException("List of logs is empty.");
+        if (exchanges.isEmpty()) {
+            throw new ExchangeException(ExchangeError.EXCHANGE_EMPTY_LIST);
         }
     }
 
     protected ExchangeEntity checkExchangeExist(long id) {
 
         return exchangeRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Log with this id does not exist."));
+                .orElseThrow(() -> new ExchangeException(ExchangeError.EXCHANGE_NOT_FOUND));
     }
 
     public void checkExchangeDtoValues(ExchangeDto exchangeDto) {

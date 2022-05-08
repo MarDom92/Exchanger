@@ -22,16 +22,12 @@ public class NbpResponseController {
     @GetMapping("/response")
     public NbpSingleResponse getResponseSingle(@RequestParam(name = "code", required = true) String current) {
 
-        String url = NBP_URL_SINGLE_RESPONSE + current;
-
-        return nbpResponseService.getResponseSingle(url);
+        return nbpResponseService.getResponseSingle(NBP_URL_SINGLE_RESPONSE + current);
     }
 
     @GetMapping("/response-array")
     public NbpArrayResponse[] getResponseTable() {
 
-        String url = NBP_URL_ARRAY_RESPONSE;
-
-        return nbpResponseService.getResponseArray(url);
+        return nbpResponseService.getResponseArray(NBP_URL_ARRAY_RESPONSE);
     }
 }

@@ -1,6 +1,6 @@
 package pl.mardom92.Exchanger.model.builder;
 
-import pl.mardom92.Exchanger.model.ExchangeEntity;
+import pl.mardom92.Exchanger.model.entity.ExchangeEntity;
 
 import java.util.Date;
 
