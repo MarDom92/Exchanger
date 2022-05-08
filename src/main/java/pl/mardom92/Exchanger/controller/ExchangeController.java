@@ -2,7 +2,7 @@ package pl.mardom92.Exchanger.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-import pl.mardom92.Exchanger.model.ExchangeEntity;
+import pl.mardom92.Exchanger.model.dto.ExchangeDto;
 import pl.mardom92.Exchanger.service.exchangeLog.ExchangeService;
 
 import java.util.List;
@@ -15,18 +15,18 @@ public class ExchangeController {
     private final ExchangeService exchangeService;
 
     @GetMapping("")
-    public List<ExchangeEntity> getAllExchange(@RequestParam(required = false, defaultValue = "0") int page,
-                                               @RequestParam(required = false, defaultValue = "0") int size) {
+    public List<ExchangeDto> getAllExchange(@RequestParam(required = false, defaultValue = "0") int page,
+                                            @RequestParam(required = false, defaultValue = "0") int size) {
         return exchangeService.getAllExchanges(page, size);
     }
 
     @GetMapping("/{id}")
-    public ExchangeEntity getSingleExchange(@PathVariable long id) {
+    public ExchangeDto getSingleExchange(@PathVariable long id) {
         return exchangeService.getSingleExchange(id);
     }
 
     @GetMapping("/exchange")
-    public ExchangeEntity exchangeCurrency(
+    public ExchangeDto exchangeCurrency(
             @RequestParam(name = "sum", required = true) double sum,
             @RequestParam(name = "in", required = true) String in,
             @RequestParam(name = "out", required = true) String out) {

@@ -1,5 +1,6 @@
 package pl.mardom92.Exchanger.model.mapper;
 
+import org.springframework.stereotype.Component;
 import pl.mardom92.Exchanger.model.ExchangeEntity;
 import pl.mardom92.Exchanger.model.builder.ExchangeBuilder;
 import pl.mardom92.Exchanger.model.builder.dto.ExchangeDtoBuilder;
@@ -7,6 +8,7 @@ import pl.mardom92.Exchanger.model.dto.ExchangeDto;
 
 import java.util.Objects;
 
+@Component
 public class ExchangeMapper {
 
     public ExchangeEntity fromDtoToEntity(ExchangeDto exchangeDto) {
@@ -41,9 +43,9 @@ public class ExchangeMapper {
             exchangeBuilder.withBidPrice(exchangeDto.getBidPrice());
         }
 
-//        if (Objects.nonNull(exchangeDto.getCreationDate())) {
-//            exchangeBuilder.withCreationDate(exchangeDto.getCreationDate());
-//        }
+        if (Objects.nonNull(exchangeDto.getCreationDate())) {
+            exchangeBuilder.withCreationDate(exchangeDto.getCreationDate());
+        }
 
         return exchangeBuilder.build();
     }
@@ -80,9 +82,9 @@ public class ExchangeMapper {
             exchangeDtoBuilder.withBidPrice(exchangeEntity.getBidPrice());
         }
 
-//        if (Objects.nonNull(exchangeEntity.getCreationDate())) {
-//            exchangeDtoBuilder.withCreationDate(exchangeEntity.getCreationDate());
-//        }
+        if (Objects.nonNull(exchangeEntity.getCreationDate())) {
+            exchangeDtoBuilder.withCreationDate(exchangeEntity.getCreationDate());
+        }
 
         return exchangeDtoBuilder.build();
     }
