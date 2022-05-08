@@ -3,7 +3,7 @@ package pl.mardom92.Exchanger.model.dto;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 @Getter
 @Setter
@@ -15,5 +15,5 @@ public class ExchangeDto {
     String outputCurrencyCode;
     double askPrice;
     double bidPrice;
-    LocalDateTime creationDate;
+    Date creationDate;
 }

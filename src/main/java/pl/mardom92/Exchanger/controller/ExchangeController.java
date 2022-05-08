@@ -15,13 +15,22 @@ public class ExchangeController {
     private final ExchangeService exchangeService;
 
     @GetMapping("")
-    public List<ExchangeEntity> getAllEvents(@RequestParam(required = false, defaultValue = "0") int page,
-                                             @RequestParam(required = false, defaultValue = "1") int size) throws Exception {
-        return exchangeService.getAllLogs(page, size);
+    public List<ExchangeEntity> getAllExchange(@RequestParam(required = false, defaultValue = "0") int page,
+                                               @RequestParam(required = false, defaultValue = "0") int size) {
+        return exchangeService.getAllExchanges(page, size);
     }
 
     @GetMapping("/{id}")
-    public ExchangeEntity getSingleEvents(@PathVariable long id) {
-        return exchangeService.getSingleLog(id);
+    public ExchangeEntity getSingleExchange(@PathVariable long id) {
+        return exchangeService.getSingleExchange(id);
+    }
+
+    @GetMapping("/exchange")
+    public ExchangeEntity exchangeCurrency(
+            @RequestParam(name = "sum", required = true) double sum,
+            @RequestParam(name = "in", required = true) String in,
+            @RequestParam(name = "out", required = true) String out) {
+
+        return exchangeService.exchangeCurrency(sum, in, out);
     }
 }

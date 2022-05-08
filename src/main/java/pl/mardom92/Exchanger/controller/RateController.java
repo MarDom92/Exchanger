@@ -27,12 +27,12 @@ public class RateController {
         return rateService.getAllCurrenciesCodes();
     }
 
-    @GetMapping("/exchange")
-    public double exchangeCurrency(
-            @RequestParam(name = "sum", required = true) double sum,
-            @RequestParam(name = "in", required = true) String in,
-            @RequestParam(name = "out", required = true) String out) {
-
-        return rateService.exchangeCurrency(sum, in, out);
-    }
+//    @GetMapping("/exchange")
+//    public double exchangeCurrency(
+//            @RequestParam(name = "sum", required = true) double sum,
+//            @RequestParam(name = "in", required = true) String in,
+//            @RequestParam(name = "out", required = true) String out) {
+//
+//        return rateService.exchangeCurrency(sum, in, out);
+//    }
 }

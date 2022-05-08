@@ -2,7 +2,7 @@ package pl.mardom92.Exchanger.model.builder;
 
 import pl.mardom92.Exchanger.model.ExchangeEntity;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 public class ExchangeBuilder {
 
@@ -14,7 +14,7 @@ public class ExchangeBuilder {
     String outputCurrencyCode;
     double askPrice;
     double bidPrice;
-    LocalDateTime creationDate;
+    Date creationDate;
 
     public ExchangeBuilder withId(long id) {
         this.id = id;
@@ -51,7 +51,7 @@ public class ExchangeBuilder {
         return this;
     }
 
-    public ExchangeBuilder withCreationDate(LocalDateTime creationDate) {
+    public ExchangeBuilder withCreationDate(Date creationDate) {
         this.creationDate = creationDate;
         return this;
     }

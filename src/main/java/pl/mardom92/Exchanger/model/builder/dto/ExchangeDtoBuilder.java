@@ -2,7 +2,7 @@ package pl.mardom92.Exchanger.model.builder.dto;
 
 import pl.mardom92.Exchanger.model.dto.ExchangeDto;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 public class ExchangeDtoBuilder {
 
@@ -12,7 +12,7 @@ public class ExchangeDtoBuilder {
     String outputCurrencyCode;
     double askPrice;
     double bidPrice;
-    LocalDateTime creationDate;
+    Date creationDate;
 
     public ExchangeDtoBuilder withInputSum(double inputSum) {
         this.inputSum = inputSum;
@@ -44,7 +44,7 @@ public class ExchangeDtoBuilder {
         return this;
     }
 
-    public ExchangeDtoBuilder withCreationDate(LocalDateTime creationDate) {
+    public ExchangeDtoBuilder withCreationDate(Date creationDate) {
         this.creationDate = creationDate;
         return this;
     }

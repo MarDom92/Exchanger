@@ -41,9 +41,9 @@ public class ExchangeMapper {
             exchangeBuilder.withBidPrice(exchangeDto.getBidPrice());
         }
 
-        if (Objects.nonNull(exchangeDto.getCreationDate())) {
-            exchangeBuilder.withCreationDate(exchangeDto.getCreationDate());
-        }
+//        if (Objects.nonNull(exchangeDto.getCreationDate())) {
+//            exchangeBuilder.withCreationDate(exchangeDto.getCreationDate());
+//        }
 
         return exchangeBuilder.build();
     }
@@ -80,9 +80,9 @@ public class ExchangeMapper {
             exchangeDtoBuilder.withBidPrice(exchangeEntity.getBidPrice());
         }
 
-        if (Objects.nonNull(exchangeEntity.getCreationDate())) {
-            exchangeDtoBuilder.withCreationDate(exchangeEntity.getCreationDate());
-        }
+//        if (Objects.nonNull(exchangeEntity.getCreationDate())) {
+//            exchangeDtoBuilder.withCreationDate(exchangeEntity.getCreationDate());
+//        }
 
         return exchangeDtoBuilder.build();
     }

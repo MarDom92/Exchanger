@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 @Getter
 @Setter
@@ -24,5 +24,5 @@ public class ExchangeEntity {
     String outputCurrencyCode;
     double askPrice;
     double bidPrice;
-    LocalDateTime creationDate;
+    Date creationDate;
 }

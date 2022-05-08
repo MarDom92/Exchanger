@@ -4,12 +4,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.mardom92.Exchanger.model.ResponseArray;
 import pl.mardom92.Exchanger.model.dto.CurrencyRateDto;
-import pl.mardom92.Exchanger.model.dto.RateSingleDto;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static pl.mardom92.Exchanger.Constants.ResponseSingleURL;
 import static pl.mardom92.Exchanger.Constants.ResponseTableURL;
 
 @Service
@@ -56,30 +54,5 @@ public class RateService {
         }
 
         return codes;
-    }
-
-    public double exchangeCurrency(double sum, String in, String out) {
-
-        String url = ResponseSingleURL;
-
-        RateSingleDto inputCurrency = responseService.getResponseSingle(url + in).getRates().get(0);
-        RateSingleDto outputCurrency = responseService.getResponseSingle(url + out).getRates().get(0);
-
-        double result = exchange(sum, inputCurrency, outputCurrency);
-
-        //2 decimal places
-        result = Math.round(result * 100.0) / 100.0;
-
-        return result;
-    }
-
-    private double exchange(double sum, RateSingleDto in, RateSingleDto out) {
-
-        double sumInPLN, result;
-
-        sumInPLN = sum / in.getAsk();
-        result = sumInPLN * out.getBid();
-
-        return result;
     }
 }
