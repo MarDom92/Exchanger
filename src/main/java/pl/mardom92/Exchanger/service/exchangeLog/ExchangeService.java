@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import pl.mardom92.Exchanger.model.ExchangeEntity;
 import pl.mardom92.Exchanger.repository.ExchangeRepository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -37,5 +38,16 @@ public class ExchangeService {
         ExchangeEntity exchange = exchangeServiceHelper.checkExchange(id);
 
         return exchange;
+    }
+
+    public ExchangeEntity addLog(ExchangeEntity exchangeEntity) {
+
+        //exchangeServiceHelper.checkLogsValues(exchangeDto);
+
+        exchangeEntity.setCreationDate(LocalDateTime.now());
+
+        exchangeRepository.save(exchangeEntity);
+
+        return exchangeEntity;
     }
 }
