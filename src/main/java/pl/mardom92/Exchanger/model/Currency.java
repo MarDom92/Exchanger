@@ -1,11 +1,11 @@
-package pl.mardom92.Exchanger.model.dto;
+package pl.mardom92.Exchanger.model;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class CurrencyRateDto {
+public class Currency {
 
     private String currency;
     private String code;

@@ -3,7 +3,7 @@ package pl.mardom92.Exchanger.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import pl.mardom92.Exchanger.model.dto.ExchangeDto;
-import pl.mardom92.Exchanger.service.exchangeLog.ExchangeService;
+import pl.mardom92.Exchanger.service.exchange.ExchangeService;
 
 import java.util.List;
 

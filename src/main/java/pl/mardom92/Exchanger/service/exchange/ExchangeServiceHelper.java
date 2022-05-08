@@ -1,8 +1,7 @@
-package pl.mardom92.Exchanger.service.exchangeLog;
+package pl.mardom92.Exchanger.service.exchange;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-import org.w3c.dom.events.EventException;
 import pl.mardom92.Exchanger.model.ExchangeEntity;
 import pl.mardom92.Exchanger.model.dto.ExchangeDto;
 import pl.mardom92.Exchanger.model.exception.exchange.ExchangeError;

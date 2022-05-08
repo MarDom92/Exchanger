@@ -1,8 +1,8 @@
 package pl.mardom92.Exchanger.model.builder;
 
-import pl.mardom92.Exchanger.model.CurrencyRateEntity;
+import pl.mardom92.Exchanger.model.Currency;
 
-public class CurrencyRateBuilder {
+public class CurrencyBuilder {
 
     private long id;
 
@@ -11,34 +11,34 @@ public class CurrencyRateBuilder {
     private double bid;
     private double ask;
 
-    public CurrencyRateBuilder withId(long id) {
+    public CurrencyBuilder withId(long id) {
         this.id = id;
         return this;
     }
 
-    public CurrencyRateBuilder withCurrency(String currency) {
+    public CurrencyBuilder withCurrency(String currency) {
         this.currency = currency;
         return this;
     }
 
-    public CurrencyRateBuilder withCode(String code) {
+    public CurrencyBuilder withCode(String code) {
         this.code = code;
         return this;
     }
 
-    public CurrencyRateBuilder withBid(Double bid) {
+    public CurrencyBuilder withBid(Double bid) {
         this.bid = bid;
         return this;
     }
 
-    public CurrencyRateBuilder withAsk(Double ask) {
+    public CurrencyBuilder withAsk(Double ask) {
         this.ask = ask;
         return this;
     }
 
-    public CurrencyRateEntity build() {
+    public Currency build() {
 
-        CurrencyRateEntity currencyRate = new CurrencyRateEntity();
+        Currency currencyRate = new Currency();
 
         currencyRate.setCurrency(currency);
         currencyRate.setCode(code);

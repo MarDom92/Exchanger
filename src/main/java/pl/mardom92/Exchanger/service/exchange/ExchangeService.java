@@ -1,4 +1,4 @@
-package pl.mardom92.Exchanger.service.exchangeLog;
+package pl.mardom92.Exchanger.service.exchange;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
@@ -6,16 +6,16 @@ import org.springframework.stereotype.Service;
 import pl.mardom92.Exchanger.model.ExchangeEntity;
 import pl.mardom92.Exchanger.model.builder.dto.ExchangeDtoBuilder;
 import pl.mardom92.Exchanger.model.dto.ExchangeDto;
-import pl.mardom92.Exchanger.model.dto.RateSingleDto;
+import pl.mardom92.Exchanger.model.RateSingle;
 import pl.mardom92.Exchanger.model.mapper.ExchangeMapper;
 import pl.mardom92.Exchanger.repository.ExchangeRepository;
-import pl.mardom92.Exchanger.service.ResponseService;
+import pl.mardom92.Exchanger.service.NbpResponseService;
 
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static pl.mardom92.Exchanger.Constants.ResponseSingleURL;
+import static pl.mardom92.Exchanger.Constants.NBP_URL_SINGLE_RESPONSE;
 
 @Service
 @RequiredArgsConstructor
@@ -24,7 +24,7 @@ public class ExchangeService {
     private final ExchangeRepository exchangeRepository;
     private final ExchangeServiceHelper exchangeServiceHelper;
     private final ExchangeMapper exchangeMapper;
-    private final ResponseService responseService;
+    private final NbpResponseService nbpResponseService;
 
     public List<ExchangeDto> getAllExchanges(int page, int size) {
 
@@ -63,10 +63,10 @@ public class ExchangeService {
 
     public ExchangeDto exchangeCurrency(double sum, String in, String out) {
 
-        String url = ResponseSingleURL;
+        String url = NBP_URL_SINGLE_RESPONSE;
 
-        RateSingleDto inputCurrency = responseService.getResponseSingle(url + in).getRates().get(0);
-        RateSingleDto outputCurrency = responseService.getResponseSingle(url + out).getRates().get(0);
+        RateSingle inputCurrency = nbpResponseService.getResponseSingle(url + in).getRates().get(0);
+        RateSingle outputCurrency = nbpResponseService.getResponseSingle(url + out).getRates().get(0);
 
         double result = exchange(sum, inputCurrency, outputCurrency);
 
@@ -89,7 +89,7 @@ public class ExchangeService {
         return exchangeDto;
     }
 
-    private double exchange(double sum, RateSingleDto in, RateSingleDto out) {
+    private double exchange(double sum, RateSingle in, RateSingle out) {
 
         double sumInPLN, result;
 

@@ -1,4 +1,4 @@
-package pl.mardom92.Exchanger.model.dto;
+package pl.mardom92.Exchanger.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class RateSingleDto {
+public class RateSingle {
 
     @JsonProperty("no")
     private String tableNumber;

@@ -4,20 +4,19 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import pl.mardom92.Exchanger.model.Currency;
-import pl.mardom92.Exchanger.service.RateService;
+import pl.mardom92.Exchanger.service.CurrencyService;
 
 import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(path = "")
-public class RateController {
+public class CurrencyController {
 
-    private final RateService rateService;
+    private final CurrencyService currencyService;
 
-    @GetMapping("/rates")
-    public List<Currency> getAllRates() {
-        return rateService.getAllRates();
+    @GetMapping("/currencies")
+    public List<String> getAllCurrencies() {
+        return currencyService.getAllCurrenciesCodes();
     }
 }

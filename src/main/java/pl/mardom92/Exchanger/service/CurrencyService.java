@@ -12,24 +12,30 @@ import static pl.mardom92.Exchanger.Constants.NBP_URL_ARRAY_RESPONSE;
 
 @Service
 @RequiredArgsConstructor
-public class RateService {
+public class CurrencyService {
 
     private final NbpResponseService nbpResponseService;
 
-    public List<Currency> getAllRates() {
+    public List<String> getAllCurrenciesCodes() {
 
-        NbpArrayResponse[] responses;
-        List<Currency> rates = new ArrayList<>();
         String url = NBP_URL_ARRAY_RESPONSE;
+        List<String> codes = new ArrayList<>();
+        List<Currency> rates = new ArrayList<>();
 
-        responses = nbpResponseService.getResponseArray(url);
+        NbpArrayResponse[] nbpArrayResponse = nbpResponseService.getResponseArray(url);
 
-        int size = responses.length;
+        int size = nbpArrayResponse.length;
 
         for (int i = 0; i < size; i++) {
-            rates.addAll(responses[i].getRates());
+
+            rates = nbpArrayResponse[i].getRates();
+
+            for (int j = 0; j < rates.size(); j++) {
+
+                codes.add(rates.get(j).getCode());
+            }
         }
 
-        return rates;
+        return codes;
     }
 }
