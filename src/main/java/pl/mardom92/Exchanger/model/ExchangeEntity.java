@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @Entity
-public class ExchangeLogEntity {
+public class ExchangeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
