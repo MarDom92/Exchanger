@@ -8,6 +8,8 @@ import pl.mardom92.Exchanger.model.builder.dto.ExchangeDtoBuilder;
 import pl.mardom92.Exchanger.model.dto.ExchangeDto;
 import pl.mardom92.Exchanger.model.entity.ExchangeEntity;
 import pl.mardom92.Exchanger.model.enums.OperationStatus;
+import pl.mardom92.Exchanger.model.exception.exchange.ExchangeError;
+import pl.mardom92.Exchanger.model.exception.exchange.ExchangeException;
 import pl.mardom92.Exchanger.model.mapper.ExchangeMapper;
 import pl.mardom92.Exchanger.repository.ExchangeRepository;
 import pl.mardom92.Exchanger.service.NbpResponseService;
@@ -31,15 +33,19 @@ public class ExchangeService {
 
     public List<ExchangeDto> getAllExchanges(int page, int size) {
 
-        if (size <= 0) {
-            size = exchangeRepository.findAll().size();
-        }
+        List<ExchangeEntity> exchanges;
+
+        size = exchangeRepository.findAll().size();
 
         if (page < 1) {
             page = 1;
         }
 
-        List<ExchangeEntity> exchanges = exchangeRepository.findAll(PageRequest.of(page - 1, size)).toList();
+        if (size <= 0) {
+            throw new ExchangeException(ExchangeError.EXCHANGE_EMPTY_LIST);
+        } else {
+            exchanges = exchangeRepository.findAll(PageRequest.of(page - 1, size)).toList();
+        }
 
         exchangeServiceHelper.checkEmptyList(exchanges);
 
