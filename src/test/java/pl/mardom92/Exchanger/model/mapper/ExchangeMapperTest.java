@@ -7,7 +7,7 @@ import pl.mardom92.Exchanger.model.builder.dto.ExchangeDtoBuilder;
 import pl.mardom92.Exchanger.model.dto.ExchangeDto;
 import pl.mardom92.Exchanger.model.entity.ExchangeEntity;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -45,7 +45,7 @@ class ExchangeMapperTest {
                 .withOutputCurrencyCode("usd")
                 .withAskPrice(2.00)
                 .withBidPrice(2.00)
-                .withCreationDate(new Date(1652108400))
+                .withCreationDate(LocalDateTime.of(2022, 04, 10, 18, 00, 00))
                 .build();
 
         //when
@@ -60,7 +60,7 @@ class ExchangeMapperTest {
                 () -> assertEquals("usd", exchangeEntity.getOutputCurrencyCode()),
                 () -> assertEquals(2.00, exchangeEntity.getAskPrice()),
                 () -> assertEquals(2.00, exchangeEntity.getBidPrice()),
-                () -> assertEquals(new Date(1652108400), exchangeEntity.getCreationDate())
+                () -> assertEquals(LocalDateTime.of(2022, 04, 10, 18, 00, 00), exchangeEntity.getCreationDate())
         );
     }
 
@@ -89,7 +89,7 @@ class ExchangeMapperTest {
                 .withOutputCurrencyCode("usd")
                 .withAskPrice(2.00)
                 .withBidPrice(2.00)
-                .withCreationDate(new Date(1652108400))
+                .withCreationDate(LocalDateTime.of(2022, 04, 10, 18, 00, 00))
                 .build();
 
         //when
@@ -104,7 +104,7 @@ class ExchangeMapperTest {
                 () -> assertEquals("usd", exchangeDto.getOutputCurrencyCode()),
                 () -> assertEquals(2.00, exchangeDto.getAskPrice()),
                 () -> assertEquals(2.00, exchangeDto.getBidPrice()),
-                () -> assertEquals(new Date(1652108400), exchangeDto.getCreationDate())
+                () -> assertEquals(LocalDateTime.of(2022, 04, 10, 18, 00, 00), exchangeDto.getCreationDate())
         );
     }
 }

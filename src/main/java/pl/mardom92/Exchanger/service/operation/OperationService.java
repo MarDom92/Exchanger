@@ -3,14 +3,14 @@ package pl.mardom92.Exchanger.service.operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
-import pl.mardom92.Exchanger.model.entity.OperationEntity;
 import pl.mardom92.Exchanger.model.builder.dto.OperationDtoBuilder;
 import pl.mardom92.Exchanger.model.dto.OperationDto;
+import pl.mardom92.Exchanger.model.entity.OperationEntity;
 import pl.mardom92.Exchanger.model.enums.OperationStatus;
 import pl.mardom92.Exchanger.model.mapper.OperationMapper;
 import pl.mardom92.Exchanger.repository.OperationRepository;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -58,7 +58,7 @@ public class OperationService {
 
         OperationDto operationDto = new OperationDtoBuilder()
                 .withOperationStatus(status)
-                .withCreationDate(new Date())
+                .withCreationDate(LocalDateTime.now())
                 .build();
 
         operationRepository.save(operationMapper.fromDtoToEntity(operationDto));

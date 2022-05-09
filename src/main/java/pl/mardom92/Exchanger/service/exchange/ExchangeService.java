@@ -3,17 +3,17 @@ package pl.mardom92.Exchanger.service.exchange;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
-import pl.mardom92.Exchanger.model.entity.ExchangeEntity;
 import pl.mardom92.Exchanger.model.RateSingle;
 import pl.mardom92.Exchanger.model.builder.dto.ExchangeDtoBuilder;
 import pl.mardom92.Exchanger.model.dto.ExchangeDto;
+import pl.mardom92.Exchanger.model.entity.ExchangeEntity;
 import pl.mardom92.Exchanger.model.enums.OperationStatus;
 import pl.mardom92.Exchanger.model.mapper.ExchangeMapper;
 import pl.mardom92.Exchanger.repository.ExchangeRepository;
 import pl.mardom92.Exchanger.service.NbpResponseService;
 import pl.mardom92.Exchanger.service.operation.OperationService;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -81,7 +81,7 @@ public class ExchangeService {
                 .withOutputCurrencyCode(out)
                 .withAskPrice(inputCurrency.getAsk())
                 .withBidPrice(outputCurrency.getBid())
-                .withCreationDate(new Date())
+                .withCreationDate(LocalDateTime.now())
                 .build();
 
         addExchange(exchangeDto);

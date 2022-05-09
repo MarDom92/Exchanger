@@ -1,8 +1,13 @@
 package pl.mardom92.Exchanger.model.builder.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import pl.mardom92.Exchanger.model.dto.ExchangeDto;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class ExchangeDtoBuilder {
 
@@ -12,7 +17,11 @@ public class ExchangeDtoBuilder {
     String outputCurrencyCode;
     double askPrice;
     double bidPrice;
-    Date creationDate;
+
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
+    LocalDateTime creationDate;
 
     public ExchangeDtoBuilder withInputSum(double inputSum) {
         this.inputSum = inputSum;
@@ -44,7 +53,7 @@ public class ExchangeDtoBuilder {
         return this;
     }
 
-    public ExchangeDtoBuilder withCreationDate(Date creationDate) {
+    public ExchangeDtoBuilder withCreationDate(LocalDateTime creationDate) {
         this.creationDate = creationDate;
         return this;
     }

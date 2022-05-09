@@ -8,7 +8,7 @@ import pl.mardom92.Exchanger.model.dto.OperationDto;
 import pl.mardom92.Exchanger.model.entity.OperationEntity;
 import pl.mardom92.Exchanger.model.enums.OperationStatus;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -41,7 +41,7 @@ class OperationMapperTest {
         //given
         OperationDto operationDto = new OperationDtoBuilder()
                 .withOperationStatus(OperationStatus.EXCHANGE_CURRENCY)
-                .withCreationDate(new Date(1652108400))
+                .withCreationDate(LocalDateTime.of(2022, 04, 10, 18, 00, 00))
                 .build();
 
         //when
@@ -51,7 +51,7 @@ class OperationMapperTest {
         assertAll(
                 () -> assertNotNull(operationEntity),
                 () -> assertEquals(OperationStatus.EXCHANGE_CURRENCY, operationEntity.getOperationStatus()),
-                () -> assertEquals(new Date(1652108400), operationEntity.getCreationDate())
+                () -> assertEquals(LocalDateTime.of(2022, 04, 10, 18, 00, 00), operationEntity.getCreationDate())
         );
     }
 
@@ -74,7 +74,7 @@ class OperationMapperTest {
         //given
         OperationEntity operationEntity = new OperationBuilder()
                 .withOperationStatus(OperationStatus.GET_RATES)
-                .withCreationDate(new Date(1652108400))
+                .withCreationDate(LocalDateTime.of(2022, 04, 10, 18, 00, 00))
                 .build();
 
         //when
@@ -84,7 +84,7 @@ class OperationMapperTest {
         assertAll(
                 () -> assertNotNull(operationDto),
                 () -> assertEquals(OperationStatus.GET_RATES, operationDto.getOperationStatus()),
-                () -> assertEquals(new Date(1652108400), operationDto.getCreationDate())
+                () -> assertEquals(LocalDateTime.of(2022, 04, 10, 18, 00, 00), operationDto.getCreationDate())
         );
     }
 }

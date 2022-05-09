@@ -1,16 +1,25 @@
 package pl.mardom92.Exchanger.model.builder;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import pl.mardom92.Exchanger.model.entity.OperationEntity;
 import pl.mardom92.Exchanger.model.enums.OperationStatus;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class OperationBuilder {
 
     private long id;
 
     OperationStatus operationStatus;
-    Date creationDate;
+
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
+    LocalDateTime creationDate;
 
     public OperationBuilder withId(long id) {
         this.id = id;
@@ -22,7 +31,7 @@ public class OperationBuilder {
         return this;
     }
 
-    public OperationBuilder withCreationDate(Date creationDate) {
+    public OperationBuilder withCreationDate(LocalDateTime creationDate) {
         this.creationDate = creationDate;
         return this;
     }
