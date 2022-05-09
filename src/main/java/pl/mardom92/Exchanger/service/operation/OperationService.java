@@ -22,7 +22,9 @@ public class OperationService {
     private final OperationServiceHelper operationServiceHelper;
     private final OperationMapper operationMapper;
 
-    public List<OperationDto> getAllOperations(int page, int size) {
+    public List<OperationDto> getAllOperationsByStatus(List<OperationStatus> statusList,
+                                                       int page,
+                                                       int size) {
 
         if (size <= 0) {
             size = operationRepository.findAll().size();
@@ -32,7 +34,13 @@ public class OperationService {
             page = 1;
         }
 
-        List<OperationEntity> operations = operationRepository.findAll(PageRequest.of(page - 1, size)).toList();
+        List<OperationEntity> operations;
+
+        if (statusList == null) {
+            operations = operationRepository.findAll(PageRequest.of(page - 1, size)).toList();
+        } else {
+            operations = operationRepository.findOperationByOperationStatusIn(statusList, PageRequest.of(page - 1, size));
+        }
 
         operationServiceHelper.checkEmptyList(operations);
 
