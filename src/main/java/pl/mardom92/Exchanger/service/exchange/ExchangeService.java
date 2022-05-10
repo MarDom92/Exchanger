@@ -35,13 +35,13 @@ public class ExchangeService {
 
         List<ExchangeEntity> exchanges;
 
-        size = exchangeRepository.findAll().size();
+        int sizeRepo = exchangeRepository.findAll().size();
 
         if (page < 1) {
             page = 1;
         }
 
-        if (size <= 0) {
+        if (sizeRepo <= 0) {
             throw new ExchangeException(ExchangeError.EXCHANGE_EMPTY_LIST);
         } else {
             exchanges = exchangeRepository.findAll(PageRequest.of(page - 1, size)).toList();
@@ -81,7 +81,7 @@ public class ExchangeService {
         result = Math.round(result * 100.0) / 100.0;
 
         ExchangeDto exchangeDto = new ExchangeDtoBuilder()
-                .withInputSum(100.0D)
+                .withInputSum(sum)
                 .withOutputSum(result)
                 .withInputCurrnecyCode(in)
                 .withOutputCurrencyCode(out)
