@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pl.mardom92.Exchanger.model.Currency;
-import pl.mardom92.Exchanger.service.RateService;
+import pl.mardom92.Exchanger.service.rate.RateService;
 
 import java.util.List;
 
