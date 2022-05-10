@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import pl.mardom92.Exchanger.service.CurrencyService;
+import pl.mardom92.Exchanger.service.currency.CurrencyService;
 
 import java.util.List;
 

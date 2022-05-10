@@ -1,12 +1,12 @@
-package pl.mardom92.Exchanger.service;
+package pl.mardom92.Exchanger.service.currency;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.mardom92.Exchanger.model.Currency;
 import pl.mardom92.Exchanger.model.NbpArrayResponse;
 import pl.mardom92.Exchanger.model.enums.OperationStatus;
+import pl.mardom92.Exchanger.service.NbpResponseService;
 import pl.mardom92.Exchanger.service.operation.OperationService;
-import pl.mardom92.Exchanger.service.rate.RateServiceHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +19,7 @@ public class CurrencyService {
 
     private final NbpResponseService nbpResponseService;
     private final OperationService operationService;
-    private final CurrencyServiceHelper rateServiceHelper;
+    private final CurrencyServiceHelper currencyServiceHelper;
 
     public List<String> getAllCurrenciesCodes() {
 
@@ -29,9 +29,9 @@ public class CurrencyService {
 
         NbpArrayResponse[] nbpArrayResponse = nbpResponseService.getResponseArray(url);
 
-        int size = nbpArrayResponse.length;
+        int length = currencyServiceHelper.checkLengthOfArray(nbpArrayResponse);
 
-        for (int i = 0; i < size; i++) {
+        for (int i = 0; i < length; i++) {
 
             rates = nbpArrayResponse[i].getRates();
 
