@@ -21,11 +21,10 @@ public class RateService {
 
     public List<Currency> getAllRates() {
 
-        NbpArrayResponse[] responses;
-        List<Currency> rates = new ArrayList<>();
         String url = NBP_URL_ARRAY_RESPONSE;
+        List<Currency> rates = new ArrayList<>();
 
-        responses = nbpResponseService.getResponseArray(url);
+        NbpArrayResponse[] responses = nbpResponseService.getResponseArray(url);
 
         int size = responses.length;
 
