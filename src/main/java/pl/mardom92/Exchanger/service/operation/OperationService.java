@@ -7,8 +7,6 @@ import pl.mardom92.Exchanger.model.builder.dto.OperationDtoBuilder;
 import pl.mardom92.Exchanger.model.dto.OperationDto;
 import pl.mardom92.Exchanger.model.entity.OperationEntity;
 import pl.mardom92.Exchanger.model.enums.OperationStatus;
-import pl.mardom92.Exchanger.model.exception.operation.OperationError;
-import pl.mardom92.Exchanger.model.exception.operation.OperationException;
 import pl.mardom92.Exchanger.model.mapper.OperationMapper;
 import pl.mardom92.Exchanger.repository.OperationRepository;
 
@@ -25,33 +23,22 @@ public class OperationService {
     private final OperationMapper operationMapper;
 
     public List<OperationDto> getAllOperationsByStatus(List<OperationStatus> statusList,
-                                                       int page,
-                                                       int size) {
+                                                       int pageNumber,
+                                                       int sizeOnPage) {
 
-        List<OperationEntity> operations;
+        List<OperationEntity> operations = operationRepository.findAll();
 
-        int sizeRepo = operationRepository.findAll().size();
+        int sizeOfList = operationServiceHelper.checkSizeOfList(operations);
 
-        if (size <= 0) {
-            size = sizeRepo;
-        }
+        pageNumber = operationServiceHelper.checkPageNumber(pageNumber);
 
-        if (page < 1) {
-            page = 1;
-        }
+        sizeOnPage = operationServiceHelper.checkSizeOnPage(sizeOnPage, sizeOfList);
 
-        if (sizeRepo <= 0) {
-            throw new OperationException(OperationError.OPERATION_EMPTY_LIST);
+        if (statusList == null) {
+            operations = operationRepository.findAll(PageRequest.of(pageNumber - 1, sizeOnPage)).toList();
         } else {
-
-            if (statusList == null) {
-                operations = operationRepository.findAll(PageRequest.of(page - 1, size)).toList();
-            } else {
-                operations = operationRepository.findOperationByOperationStatusIn(statusList, PageRequest.of(page - 1, size));
-            }
+            operations = operationRepository.findOperationByOperationStatusIn(statusList, PageRequest.of(pageNumber - 1, sizeOnPage));
         }
-
-        operationServiceHelper.checkEmptyList(operations);
 
         return operations.stream().map(operationMapper::fromEntityToDto).collect(Collectors.toList());
     }
