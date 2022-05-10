@@ -15,10 +15,10 @@ public class ExchangeController {
     private final ExchangeService exchangeService;
 
     @GetMapping("")
-    public List<ExchangeDto> getAllExchanges(@RequestParam(required = false, defaultValue = "0") int page,
-                                             @RequestParam(required = false, defaultValue = "0") int size) {
+    public List<ExchangeDto> getAllExchanges(@RequestParam(required = false, defaultValue = "0", name = "page") int pageNumber,
+                                             @RequestParam(required = false, defaultValue = "0", name = "size") int sizeOnPage) {
 
-        return exchangeService.getAllExchanges(page, size);
+        return exchangeService.getAllExchanges(pageNumber, sizeOnPage);
     }
 
     @GetMapping("/{id}")
@@ -29,9 +29,9 @@ public class ExchangeController {
 
     @GetMapping("/exchange")
     public ExchangeDto exchangeCurrency(
-            @RequestParam(name = "sum", required = true, defaultValue = "0.0") double sum,
-            @RequestParam(name = "in", required = true, defaultValue = "") String in,
-            @RequestParam(name = "out", required = true, defaultValue = "") String out) {
+            @RequestParam(name = "sum", required = false, defaultValue = "0.0") double sum,
+            @RequestParam(name = "in", required = false, defaultValue = "") String in,
+            @RequestParam(name = "out", required = false, defaultValue = "") String out) {
 
         return exchangeService.exchangeCurrency(sum, in, out);
     }

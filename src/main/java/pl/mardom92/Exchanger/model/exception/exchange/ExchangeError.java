@@ -9,6 +9,7 @@ public enum ExchangeError {
 
     EXCHANGE_NOT_FOUND("Exchange does not exist."),
     EXCHANGE_EMPTY_LIST("List of exchanges is empty."),
+    EXCHANGE_WRONG_PARAMETER_VALUE("Wrong parameter value."),
     EXCHANGE_WRONG_FIELD_VALUE("Wrong exchange field value."),
     EXCHANGE_WRONG_DATE_FORMAT("Wrong date format.");
 

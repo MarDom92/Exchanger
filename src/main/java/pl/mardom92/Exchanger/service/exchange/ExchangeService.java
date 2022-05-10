@@ -8,10 +8,9 @@ import pl.mardom92.Exchanger.model.builder.dto.ExchangeDtoBuilder;
 import pl.mardom92.Exchanger.model.dto.ExchangeDto;
 import pl.mardom92.Exchanger.model.entity.ExchangeEntity;
 import pl.mardom92.Exchanger.model.enums.OperationStatus;
-import pl.mardom92.Exchanger.model.exception.exchange.ExchangeError;
-import pl.mardom92.Exchanger.model.exception.exchange.ExchangeException;
 import pl.mardom92.Exchanger.model.mapper.ExchangeMapper;
 import pl.mardom92.Exchanger.repository.ExchangeRepository;
+import pl.mardom92.Exchanger.service.CurrencyService;
 import pl.mardom92.Exchanger.service.NbpResponseService;
 import pl.mardom92.Exchanger.service.operation.OperationService;
 
@@ -30,24 +29,19 @@ public class ExchangeService {
     private final ExchangeMapper exchangeMapper;
     private final NbpResponseService nbpResponseService;
     private final OperationService operationService;
+    private final CurrencyService currencyService;
 
-    public List<ExchangeDto> getAllExchanges(int page, int size) {
+    public List<ExchangeDto> getAllExchanges(int pageNumber, int sizeOnPage) {
 
-        List<ExchangeEntity> exchanges;
+        List<ExchangeEntity> exchanges = exchangeRepository.findAll();
 
-        int sizeRepo = exchangeRepository.findAll().size();
+        int sizeOfList = exchangeServiceHelper.checkSizeOfList(exchanges);
 
-        if (page < 1) {
-            page = 1;
-        }
+        pageNumber = exchangeServiceHelper.checkPageNumber(pageNumber);
 
-        if (sizeRepo <= 0) {
-            throw new ExchangeException(ExchangeError.EXCHANGE_EMPTY_LIST);
-        } else {
-            exchanges = exchangeRepository.findAll(PageRequest.of(page - 1, size)).toList();
-        }
+        sizeOnPage = exchangeServiceHelper.checkSizeOnPage(sizeOnPage, sizeOfList);
 
-        exchangeServiceHelper.checkEmptyList(exchanges);
+        exchanges = exchangeRepository.findAll(PageRequest.of(pageNumber - 1, sizeOnPage)).toList();
 
         return exchanges.stream().map(exchangeMapper::fromEntityToDto).collect(Collectors.toList());
     }
@@ -70,11 +64,16 @@ public class ExchangeService {
 
     public ExchangeDto exchangeCurrency(double sum, String in, String out) {
 
-        if (in == null || out == null || sum <= 0) {
-            throw new ExchangeException(ExchangeError.EXCHANGE_WRONG_FIELD_VALUE);
-        }
+        sum = exchangeServiceHelper.checkSum(sum);
+        in = exchangeServiceHelper.checkCurrencyCode(in);
+        out = exchangeServiceHelper.checkCurrencyCode(out);
 
         String url = NBP_URL_SINGLE_RESPONSE;
+
+        List<String> currencies = currencyService.getAllCurrenciesCodes();
+
+        in = exchangeServiceHelper.checkCurrencyCodeIsOnList(in, currencies);
+        out = exchangeServiceHelper.checkCurrencyCodeIsOnList(out, currencies);
 
         RateSingle inputCurrency = nbpResponseService.getResponseSingle(url + in).getRates().get(0);
         RateSingle outputCurrency = nbpResponseService.getResponseSingle(url + out).getRates().get(0);
