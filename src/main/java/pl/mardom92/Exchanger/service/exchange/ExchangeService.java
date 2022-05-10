@@ -70,6 +70,10 @@ public class ExchangeService {
 
     public ExchangeDto exchangeCurrency(double sum, String in, String out) {
 
+        if (in == null || out == null || sum <= 0) {
+            throw new ExchangeException(ExchangeError.EXCHANGE_WRONG_FIELD_VALUE);
+        }
+
         String url = NBP_URL_SINGLE_RESPONSE;
 
         RateSingle inputCurrency = nbpResponseService.getResponseSingle(url + in).getRates().get(0);

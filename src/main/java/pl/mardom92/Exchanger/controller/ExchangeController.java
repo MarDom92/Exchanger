@@ -29,9 +29,9 @@ public class ExchangeController {
 
     @GetMapping("/exchange")
     public ExchangeDto exchangeCurrency(
-            @RequestParam(name = "sum", required = true) double sum,
-            @RequestParam(name = "in", required = true) String in,
-            @RequestParam(name = "out", required = true) String out) {
+            @RequestParam(name = "sum", required = true, defaultValue = "0.0") double sum,
+            @RequestParam(name = "in", required = true, defaultValue = "") String in,
+            @RequestParam(name = "out", required = true, defaultValue = "") String out) {
 
         return exchangeService.exchangeCurrency(sum, in, out);
     }
