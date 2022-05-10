@@ -7,6 +7,8 @@ import pl.mardom92.Exchanger.model.builder.dto.OperationDtoBuilder;
 import pl.mardom92.Exchanger.model.dto.OperationDto;
 import pl.mardom92.Exchanger.model.entity.OperationEntity;
 import pl.mardom92.Exchanger.model.enums.OperationStatus;
+import pl.mardom92.Exchanger.model.exception.operation.OperationError;
+import pl.mardom92.Exchanger.model.exception.operation.OperationException;
 import pl.mardom92.Exchanger.model.mapper.OperationMapper;
 import pl.mardom92.Exchanger.repository.OperationRepository;
 
@@ -26,20 +28,27 @@ public class OperationService {
                                                        int page,
                                                        int size) {
 
+        List<OperationEntity> operations;
+
+        int sizeRepo = operationRepository.findAll().size();
+
         if (size <= 0) {
-            size = operationRepository.findAll().size();
+            size = sizeRepo;
         }
 
         if (page < 1) {
             page = 1;
         }
 
-        List<OperationEntity> operations;
-
-        if (statusList == null) {
-            operations = operationRepository.findAll(PageRequest.of(page - 1, size)).toList();
+        if (sizeRepo <= 0) {
+            throw new OperationException(OperationError.OPERATION_EMPTY_LIST);
         } else {
-            operations = operationRepository.findOperationByOperationStatusIn(statusList, PageRequest.of(page - 1, size));
+
+            if (statusList == null) {
+                operations = operationRepository.findAll(PageRequest.of(page - 1, size)).toList();
+            } else {
+                operations = operationRepository.findOperationByOperationStatusIn(statusList, PageRequest.of(page - 1, size));
+            }
         }
 
         operationServiceHelper.checkEmptyList(operations);
