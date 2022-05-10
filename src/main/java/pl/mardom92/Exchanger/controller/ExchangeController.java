@@ -9,7 +9,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping(path = "/exchanges")
+@RequestMapping(path = "/api/exchanges")
 public class ExchangeController {
 
     private final ExchangeService exchangeService;

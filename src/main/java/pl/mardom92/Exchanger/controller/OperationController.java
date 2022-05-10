@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping(path = "/operations")
+@RequestMapping(path = "/api/operations")
 public class OperationController {
 
     private final OperationService operationService;

@@ -19,7 +19,7 @@ public class NbpResponseController {
 
     private final NbpResponseService nbpResponseService;
 
-    @GetMapping("/response")
+    @GetMapping("/api/response")
     public NbpSingleResponse getResponseSingle(@RequestParam(name = "code", required = true) String current) {
 
         return nbpResponseService.getResponseSingle(NBP_URL_SINGLE_RESPONSE + current);
