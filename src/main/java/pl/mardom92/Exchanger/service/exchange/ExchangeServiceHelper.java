@@ -86,7 +86,6 @@ public class ExchangeServiceHelper {
 
     public void checkExchangeDtoValues(ExchangeDto exchangeDto) {
 
-
         if (exchangeDto.getInputSum() <= 0) {
             throw new ExchangeException(ExchangeError.EXCHANGE_WRONG_FIELD_VALUE);
         }
