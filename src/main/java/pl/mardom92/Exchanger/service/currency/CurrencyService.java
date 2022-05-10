@@ -6,6 +6,7 @@ import pl.mardom92.Exchanger.model.Currency;
 import pl.mardom92.Exchanger.model.NbpArrayResponse;
 import pl.mardom92.Exchanger.model.enums.OperationStatus;
 import pl.mardom92.Exchanger.service.operation.OperationService;
+import pl.mardom92.Exchanger.service.rate.RateServiceHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +19,7 @@ public class CurrencyService {
 
     private final NbpResponseService nbpResponseService;
     private final OperationService operationService;
+    private final CurrencyServiceHelper rateServiceHelper;
 
     public List<String> getAllCurrenciesCodes() {
 
