@@ -8,12 +8,8 @@ import lombok.Setter;
 @Setter
 public class Currency {
 
-    @NonNull
     private String currency;
-    @NonNull
     private String code;
-    @NonNull
     private double bid;
-    @NonNull
     private double ask;
 }
