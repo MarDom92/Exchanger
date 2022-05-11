@@ -11,7 +11,7 @@ import pl.mardom92.Exchanger.model.enums.OperationStatus;
 import pl.mardom92.Exchanger.model.mapper.ExchangeMapper;
 import pl.mardom92.Exchanger.repository.ExchangeRepository;
 import pl.mardom92.Exchanger.service.currency.CurrencyService;
-import pl.mardom92.Exchanger.service.NbpResponseService;
+import pl.mardom92.Exchanger.service.nbpResponseService.NbpResponseService;
 import pl.mardom92.Exchanger.service.operation.OperationService;
 
 import java.time.LocalDateTime;

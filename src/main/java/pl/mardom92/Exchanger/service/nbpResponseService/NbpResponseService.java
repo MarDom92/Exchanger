@@ -1,4 +1,4 @@
-package pl.mardom92.Exchanger.service;
+package pl.mardom92.Exchanger.service.nbpResponseService;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

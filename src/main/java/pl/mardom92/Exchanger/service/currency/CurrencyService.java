@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import pl.mardom92.Exchanger.model.Currency;
 import pl.mardom92.Exchanger.model.NbpArrayResponse;
 import pl.mardom92.Exchanger.model.enums.OperationStatus;
-import pl.mardom92.Exchanger.service.NbpResponseService;
+import pl.mardom92.Exchanger.service.nbpResponseService.NbpResponseService;
 import pl.mardom92.Exchanger.service.operation.OperationService;
 
 import java.util.ArrayList;
