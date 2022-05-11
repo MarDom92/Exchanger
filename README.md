@@ -8,6 +8,28 @@ Basic functionalities of the application:
 - displaying a list of the current rates of available currencies for exchange
 - exchanging a given amount from one currency to another
 
+## Run application
+Commands in terminal (in main directory):  
+
+To build jar
+
+```
+./mvnw clean package -DskipTests
+```
+To build docker image:
+```
+docker-compose up
+```
+To stop docker image:
+```
+docker-compose down
+```
+
+The app runs on: http://localhost:8080/
+
+Swagger Ui runs on: http://localhost:8080/swagger-ui/
+
+
 ## Api query list of application:
 
 1. Returns a list of available code currencies
@@ -64,26 +86,3 @@ Optional parameters:
 ```
 /api/operations/id
 ```
-
-
-The app runs on: http://localhost:8080/
-
-Swagger Ui runs on: http://localhost:8080/swagger-ui/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
