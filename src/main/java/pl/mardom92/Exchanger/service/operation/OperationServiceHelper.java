@@ -26,7 +26,7 @@ public class OperationServiceHelper {
 
     protected int checkPageNumber(int pageNumber) {
 
-        if (pageNumber < 1) {
+        if (pageNumber < 0) {
             throw new OperationException(OperationError.OPERATION_WRONG_PAGE_NUMBER_VALUE);
         }
 

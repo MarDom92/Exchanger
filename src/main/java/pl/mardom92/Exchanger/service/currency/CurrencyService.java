@@ -50,8 +50,6 @@ public class CurrencyService {
             codes.add(currencies.get(i).getCode());
         }
 
-        operationService.addOperation(OperationStatus.GET_CURRENCIES);
-
         return codes;
     }
 
