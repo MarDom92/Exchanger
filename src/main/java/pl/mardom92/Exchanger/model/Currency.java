@@ -1,7 +1,6 @@
 package pl.mardom92.Exchanger.model;
 
 import lombok.Getter;
-import lombok.NonNull;
 import lombok.Setter;
 
 @Getter

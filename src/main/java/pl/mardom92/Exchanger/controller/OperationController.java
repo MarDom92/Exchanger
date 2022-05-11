@@ -17,9 +17,9 @@ public class OperationController {
 
     @GetMapping("")
     public List<OperationDto> getAllOperationsByStatus(@RequestParam(required = false, name = "status") List<OperationStatus> statusList,
-                                                       @RequestParam(required = false, defaultValue = "0") int page,
-                                                       @RequestParam(required = false, defaultValue = "0") int size) {
-        return operationService.getAllOperationsByStatus(statusList, page, size);
+                                                       @RequestParam(required = false, defaultValue = "1", name = "page") int pageNumber,
+                                                       @RequestParam(required = false, defaultValue = "0", name = "size") int sizeOnPage) {
+        return operationService.getAllOperationsByStatus(statusList, pageNumber, sizeOnPage);
     }
 
     @GetMapping("/{id}")
