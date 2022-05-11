@@ -10,17 +10,17 @@ Basic functionalities of the application:
 
 ## Api query list of application:
 
-1. Returns a list of available currencies
+1. Returns a list of available code currencies
 ```
-/api/currencies
+/api/currencies/codes
 ```
 
 2. Returns a list of the exchange rates of the available currencies:
 ```
-/api/rates
+/api/currencies
 ```
 
-3. Returns a list of currency exchange (without parameters, returns all list items). Contains pagination with the number of the displayed page and the number of elements on the page.  
+3. Returns a list of currency exchange (without parameters returns all list items). Contains pagination with the number of the displayed page and the number of elements on the page.  
 Optional parameters: 
 - **page** which results page to display
 - **size** how many results per page to display
@@ -47,7 +47,7 @@ Required parameters:
 
 ```
 
-6. Returns information about all operations related to the currency exchange (without parameters, returns all list items). Contains pagination with the number of the displayed page and the number of elements on the page and filtering the results by status.  
+6. Returns information about all operations related to the currency exchange (without parameters returns all list items). Contains pagination with the number of the displayed page and the number of elements on the page and filtering the results by status.  
 Optional parameters: 
 - **status** as kind of operation, possible values: GET_CURRENCIES, GET_RATES, EXCHANGE_CURRENCY.
 - **page** which results page to display
