@@ -34,7 +34,11 @@ public class OperationService {
 
         sizeOnPage = operationServiceHelper.checkSizeOnPage(sizeOnPage, sizeOfList);
 
-        operations = operationRepository.findAll(PageRequest.of(pageNumber - 1, sizeOnPage)).toList();
+        if (statusList == null || statusList.isEmpty()) {
+            operations = operationRepository.findAll(PageRequest.of(pageNumber - 1, sizeOnPage)).toList();
+        } else {
+            operations = operationRepository.findOperationByOperationStatusIn(statusList, PageRequest.of(pageNumber - 1, sizeOnPage));
+        }
 
         return operations.stream().map(operationMapper::fromEntityToDto).collect(Collectors.toList());
     }
