@@ -20,7 +20,7 @@ public class CurrencyServiceHelper {
         }
     }
 
-    protected int checkLengthOfListCurrency(List<Currency> currencies) {
+    protected int checkSizeOfListCurrency(List<Currency> currencies) {
 
         if (currencies.size() <= 0) {
             throw new CurrencyException(CurrencyError.CURRENCY_EMPTY_LIST);

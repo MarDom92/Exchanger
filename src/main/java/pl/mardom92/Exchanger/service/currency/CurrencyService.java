@@ -44,7 +44,7 @@ public class CurrencyService {
         List<String> codes = new ArrayList<>();
         List<Currency> currencies = getAllCurrencies();
 
-        int size = currencyServiceHelper.checkLengthOfListCurrency(currencies);
+        int size = currencyServiceHelper.checkSizeOfListCurrency(currencies);
 
         for (int i = 0; i < size; i++) {
             codes.add(currencies.get(i).getCode());
