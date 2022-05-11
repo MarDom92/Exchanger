@@ -1,5 +1,6 @@
 package pl.mardom92.Exchanger.model.builder;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import pl.mardom92.Exchanger.model.Currency;
 
 public class CurrencyBuilder {

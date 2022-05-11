@@ -15,7 +15,7 @@ public class ExchangeController {
     private final ExchangeService exchangeService;
 
     @GetMapping("")
-    public List<ExchangeDto> getAllExchanges(@RequestParam(required = false, defaultValue = "0", name = "page") int pageNumber,
+    public List<ExchangeDto> getAllExchanges(@RequestParam(required = false, defaultValue = "1", name = "page") int pageNumber,
                                              @RequestParam(required = false, defaultValue = "0", name = "size") int sizeOnPage) {
 
         return exchangeService.getAllExchanges(pageNumber, sizeOnPage);

@@ -64,7 +64,7 @@ class ExchangeServiceHelperTest {
         } catch (ExchangeException exception) {
 
             //then
-            assertEquals("Wrong parameter value.", exception.getExchangeError().getMessage());
+            assertEquals("Wrong page number value.", exception.getExchangeError().getMessage());
         }
     }
 
@@ -94,25 +94,39 @@ class ExchangeServiceHelperTest {
         } catch (ExchangeException exception) {
 
             //then
-            assertEquals("Wrong parameter value.", exception.getExchangeError().getMessage());
+            assertEquals("Parameter size on page is to great.", exception.getExchangeError().getMessage());
         }
     }
 
     @Test
-    void shouldThrowExceptionWhenCheckSizeOnPageAndSizeOnPageIsLessThanOrEqualToZero() {
+    void shouldThrowExceptionWhenCheckSizeOnPageAndSizeOnPageIsLessThanZero() {
 
         //given
-        int pageNumber = -5;
+        int sizeOnPage = -5;
         int maxSize = 3;
 
         //when
         try {
-            exchangeServiceHelper.checkSizeOnPage(pageNumber, maxSize);
+            exchangeServiceHelper.checkSizeOnPage(sizeOnPage, maxSize);
         } catch (ExchangeException exception) {
 
             //then
-            assertEquals("Wrong parameter value.", exception.getExchangeError().getMessage());
+            assertEquals("Parameter size on page is to small.", exception.getExchangeError().getMessage());
         }
+    }
+
+    @Test
+    void shouldReturnMaxSizeWhenCheckSizeOnPageAndSizeOnPageIsZero() {
+
+        //given
+        int sizeOnPage = 0;
+        int maxSize = 3;
+
+        //when
+        int result = exchangeServiceHelper.checkSizeOnPage(sizeOnPage, maxSize);
+
+        //then
+        assertEquals(3, result);
     }
 
     @Test
@@ -122,10 +136,10 @@ class ExchangeServiceHelperTest {
         int size = 2;
 
         //when
-        int page = exchangeServiceHelper.checkPageNumber(size);
+        int result = exchangeServiceHelper.checkPageNumber(size);
 
         //then
-        assertEquals(2, size);
+        assertEquals(2, result);
     }
 
     @Test

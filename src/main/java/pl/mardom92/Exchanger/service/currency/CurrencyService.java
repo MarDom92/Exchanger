@@ -21,28 +21,53 @@ public class CurrencyService {
     private final OperationService operationService;
     private final CurrencyServiceHelper currencyServiceHelper;
 
+    public List<String> getAllCurrenciesCodesAndAddOperation() {
+
+        List<String> codes = getAllCurrenciesCodes();
+
+        operationService.addOperation(OperationStatus.GET_CURRENCIES);
+
+        return codes;
+    }
+
+    public List<Currency> getAllCurrenciesAndAddOperation() {
+
+        List<Currency> currencies = getAllCurrencies();
+
+        operationService.addOperation(OperationStatus.GET_RATES);
+
+        return currencies;
+    }
+
     public List<String> getAllCurrenciesCodes() {
 
-        String url = NBP_URL_ARRAY_RESPONSE;
         List<String> codes = new ArrayList<>();
-        List<Currency> rates = new ArrayList<>();
+        List<Currency> currencies = getAllCurrencies();
 
-        NbpArrayResponse[] nbpArrayResponse = nbpResponseService.getResponseArray(url);
+        int size = currencyServiceHelper.checkLengthOfListCurrency(currencies);
 
-        int length = currencyServiceHelper.checkLengthOfArray(nbpArrayResponse);
-
-        for (int i = 0; i < length; i++) {
-
-            rates = nbpArrayResponse[i].getRates();
-
-            for (int j = 0; j < rates.size(); j++) {
-
-                codes.add(rates.get(j).getCode());
-            }
+        for (int i = 0; i < size; i++) {
+            codes.add(currencies.get(i).getCode());
         }
 
         operationService.addOperation(OperationStatus.GET_CURRENCIES);
 
         return codes;
+    }
+
+    public List<Currency> getAllCurrencies() {
+
+        String url = NBP_URL_ARRAY_RESPONSE;
+        List<Currency> currencies = new ArrayList<>();
+
+        NbpArrayResponse[] responses = nbpResponseService.getResponseArray(url);
+
+        int length = currencyServiceHelper.checkLengthOfNbpArrayResponse(responses);
+
+        for (int i = 0; i < length; i++) {
+            currencies.addAll(responses[i].getCurrencies());
+        }
+
+        return currencies;
     }
 }

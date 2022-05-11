@@ -31,7 +31,7 @@ public class ExchangeServiceHelper {
     protected int checkPageNumber(int pageNumber) {
 
         if (pageNumber < 1) {
-            throw new ExchangeException(ExchangeError.EXCHANGE_WRONG_PARAMETER_VALUE);
+            throw new ExchangeException(ExchangeError.EXCHANGE_WRONG_PAGE_NUMBER_VALUE);
         }
 
         return pageNumber;
@@ -40,12 +40,14 @@ public class ExchangeServiceHelper {
     protected int checkSizeOnPage(int sizeOnPage, int maxSize) {
 
         if (sizeOnPage > maxSize) {
-            throw new ExchangeException(ExchangeError.EXCHANGE_WRONG_PARAMETER_VALUE);
-        } else if (sizeOnPage <= 0) {
-            throw new ExchangeException(ExchangeError.EXCHANGE_WRONG_PARAMETER_VALUE);
-        } else {
-            return sizeOnPage;
+            throw new ExchangeException(ExchangeError.EXCHANGE_SIZE_ON_PAGE_TOO_GREAT);
+        } else if (sizeOnPage < 0) {
+            throw new ExchangeException(ExchangeError.EXCHANGE_SIZE_ON_PAGE_TOO_SMALL);
+        } else if (sizeOnPage == 0) {
+            sizeOnPage = maxSize;
         }
+
+        return sizeOnPage;
     }
 
     protected ExchangeEntity checkExchangeExist(long id) {

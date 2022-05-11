@@ -1,5 +1,6 @@
 package pl.mardom92.Exchanger.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
@@ -18,6 +19,7 @@ public class NbpArrayResponse {
     private String tradingDate;
     @NonNull
     private String effectiveDate;
+    @JsonProperty("rates")
     @NonNull
-    private List<Currency> rates;
+    private List<Currency> currencies;
 }
