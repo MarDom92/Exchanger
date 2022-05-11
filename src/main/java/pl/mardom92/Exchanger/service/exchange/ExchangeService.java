@@ -18,7 +18,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static pl.mardom92.Exchanger.Constants.NBP_URL_SINGLE_RESPONSE;
+import static pl.mardom92.Exchanger.model.constant.NbpUrlConstants.NBP_URL_SINGLE_RESPONSE;
 
 @Service
 @RequiredArgsConstructor

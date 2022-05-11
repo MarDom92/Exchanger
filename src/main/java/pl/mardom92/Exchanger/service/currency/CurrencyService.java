@@ -11,7 +11,7 @@ import pl.mardom92.Exchanger.service.operation.OperationService;
 import java.util.ArrayList;
 import java.util.List;
 
-import static pl.mardom92.Exchanger.Constants.NBP_URL_ARRAY_RESPONSE;
+import static pl.mardom92.Exchanger.model.constant.NbpUrlConstants.NBP_URL_ARRAY_RESPONSE;
 
 @Service
 @RequiredArgsConstructor
