@@ -13,6 +13,6 @@ public class OperationExceptionHandler {
 
         HttpStatus httpStatus = HttpStatus.MULTI_STATUS;
 
-        return ResponseEntity.status(httpStatus).body(new OperationErrorInfo(exception.getExchangeError().getMessage()));
+        return ResponseEntity.status(httpStatus).body(new OperationErrorInfo(exception.getOperationError().getMessage()));
     }
 }

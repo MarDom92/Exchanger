@@ -3,9 +3,6 @@ package pl.mardom92.Exchanger.service.operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import pl.mardom92.Exchanger.model.entity.OperationEntity;
-import pl.mardom92.Exchanger.model.enums.OperationStatus;
-import pl.mardom92.Exchanger.model.exception.exchange.ExchangeError;
-import pl.mardom92.Exchanger.model.exception.exchange.ExchangeException;
 import pl.mardom92.Exchanger.model.exception.operation.OperationError;
 import pl.mardom92.Exchanger.model.exception.operation.OperationException;
 import pl.mardom92.Exchanger.repository.OperationRepository;
@@ -30,7 +27,7 @@ public class OperationServiceHelper {
     protected int checkPageNumber(int pageNumber) {
 
         if (pageNumber < 1) {
-            throw new OperationException(OperationError.OPERATION_WRONG_PARAMETER_VALUE);
+            throw new OperationException(OperationError.OPERATION_WRONG_PAGE_NUMBER_VALUE);
         }
 
         return pageNumber;
@@ -39,12 +36,14 @@ public class OperationServiceHelper {
     protected int checkSizeOnPage(int sizeOnPage, int maxSize) {
 
         if (sizeOnPage > maxSize) {
-            throw new OperationException(OperationError.OPERATION_WRONG_PARAMETER_VALUE);
-        } else if (sizeOnPage <= 0) {
-            throw new OperationException(OperationError.OPERATION_WRONG_PARAMETER_VALUE);
-        } else {
-            return sizeOnPage;
+            throw new OperationException(OperationError.OPERATION_SIZE_ON_PAGE_TOO_GREAT);
+        } else if (sizeOnPage < 0) {
+            throw new OperationException(OperationError.OPERATION_SIZE_ON_PAGE_TOO_SMALL);
+        } else if (sizeOnPage == 0) {
+            sizeOnPage = maxSize;
         }
+
+        return sizeOnPage;
     }
 
     protected OperationEntity checkOperationExist(long id) {

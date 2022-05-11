@@ -7,5 +7,5 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class OperationException extends RuntimeException {
 
-    private final OperationError exchangeError;
+    private final OperationError operationError;
 }
