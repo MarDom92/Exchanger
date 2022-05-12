@@ -8,7 +8,7 @@ Basic functionalities of the application:
 - displaying a list of the current rates of available currencies for exchange
 - exchanging a given amount from one currency to another  
 
-  ## Run application
+## Run application
 Commands in terminal (in main directory):  
 
 To build jar
@@ -25,11 +25,13 @@ To stop docker image:
 docker-compose down
 ```
 
-  The app runs on: http://localhost:8080/
+The app runs on: http://localhost:8080/
 
-Swagger UI runs on: http://localhost:8080/swagger-ui/  
+Swagger UI runs on: http://localhost:8080/swagger-ui/
 
-  ### Curl commands (examples):  
+Apllication is deployed on Heroku: https://exchanger987.herokuapp.com/  
+
+### Curl commands (examples):  
 1. GET command example
 ```
 curl -X GET http://localhost:8080/api/currencies
@@ -39,7 +41,7 @@ curl -X GET http://localhost:8080/api/currencies
 curl -X GET -F 'size=3' -F 'page=4' http://localhost:8080/api/exchanges
 ```
 
-  ## Api queries list:
+## Api queries list:
 
 1. Returns a list of available code currencies
 ```
@@ -96,7 +98,7 @@ GET /api/operations?page=2&size=2&status=EXCHANGE_CURRENCY
 GET /api/operations/id
 ```
 
-  ## Tips
+## Tips
 Fix linux socket permission denied when try to connect to the docker deamon socket:
 ```
 sudo chmod 666 /var/run/docker.sock
